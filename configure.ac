@@ -1,11 +1,11 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.67])
+AC_PREREQ([2.58])
 
 AC_INIT(
     [crosstool-NG],
-    [m4_esyscmd_s([maintainer/git-version-gen --prefix crosstool-ng- .tarball-version])],
+    [m4_normalize(m4_esyscmd([maintainer/git-version-gen --prefix crosstool-ng- .tarball-version]))],
     [crossgcc@sourceware.org],
     [crosstool-ng],
     [http://crosstool-ng.org])
