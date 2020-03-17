@@ -163,12 +163,13 @@ CTNG_PROG_VERSION_REQ_STRICT([BASH_SHELL],
     [bash],
     [^GNU bash, version (3\.[1-9]|4|5)])
 
+AC_PROG_AWK
 # We need a awk that *is* GNU awk
-CTNG_PROG_VERSION_REQ_STRICT([AWK],
-    [GNU awk],
-    [awk],
-    [gawk awk],
-    [^GNU Awk ])
+# CTNG_PROG_VERSION_REQ_STRICT([AWK],
+#     [GNU awk],
+#     [awk],
+#     [gawk awk],
+#     [^GNU Awk ])
 
 # FIXME This checks for tools at the time configure runs. If a tool is later updated
 # to satisfy our version requirement, we still won't be able to see that. Or worse,
