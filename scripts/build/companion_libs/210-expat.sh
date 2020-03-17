@@ -99,6 +99,7 @@ do_expat_backend() {
         --host=${host}                                              \
         --prefix="${prefix}"                                        \
         --enable-static                                             \
+        --without-xmlwf                                             \
         --without-docbook                                           \
         "${extra_config[@]}"
 
