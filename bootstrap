@@ -818,9 +818,6 @@ msg "*** Gathering the list of data files to install"
 } > verbatim-data.mk
 
 msg "*** Running autoreconf"
-aclocal -I m4
-autoheader
-automake -a -c
-autoconf -I m4
+autoreconf --force -I m4
 
 msg "*** Done!"
