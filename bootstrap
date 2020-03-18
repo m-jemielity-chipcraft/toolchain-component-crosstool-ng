@@ -819,6 +819,7 @@ msg "*** Gathering the list of data files to install"
 
 msg "*** Running autoreconf"
 aclocal -I m4
+autoheader
 automake -a -c
 autoconf -I m4
 
