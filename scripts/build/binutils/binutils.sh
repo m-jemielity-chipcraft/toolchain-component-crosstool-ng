@@ -152,6 +152,16 @@ do_binutils_backend() {
     fi
     if [ "${CT_BINUTILS_PLUGINS}" = "y" ]; then
         extra_config+=( --enable-plugins )
+    else
+        # bintuils have a weird config, where
+        # if dlfcn.h or windows.h are found
+        # (see <binutils>/config/plugins.m4)
+        # then plugins are enabled
+        # in static builds we want to disable
+        # dlopen used by plugins entirely
+        if [ "${CT_STATIC_TOOLCHAIN}" = "y"]; then
+            extra_config+=( --disable-plugins )
+        fi
     fi
     if [ "${CT_BINUTILS_RELRO}" = "y" ]; then
         extra_config+=( --enable-relro )
