@@ -159,7 +159,7 @@ do_binutils_backend() {
         # then plugins are enabled
         # in static builds we want to disable
         # dlopen used by plugins entirely
-        if [ "${CT_STATIC_TOOLCHAIN}" = "y"]; then
+        if [ "${static_build}" = "y"]; then
             extra_config+=( --disable-plugins )
         fi
     fi
