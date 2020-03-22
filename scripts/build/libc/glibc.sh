@@ -341,6 +341,7 @@ glibc_backend_once()
         # Building the bootstrap gcc requires either setting inhibit_libc, or
         # having a copy of stdio_lim.h... see
         # http://sources.redhat.com/ml/libc-alpha/2003-11/msg00045.html
+        mkdir -p "${CT_HEADERS_DIR}/bits/"
         CT_DoExecLog ALL cp -v bits/stdio_lim.h "${CT_HEADERS_DIR}/bits/stdio_lim.h"
 
         # Following error building gcc-4.0.0's gcj:
