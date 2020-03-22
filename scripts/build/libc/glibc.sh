@@ -459,7 +459,7 @@ glibc_min_kernel_config()
                 # headers. On the other hand, both method will have the kernel
                 # version installed in "usr/include/linux/version.h" in the sysroot.
                 # Parse that instead of having two code-paths.
-                version_code_file="${CT_SYSROOT_DIR}/usr/include/linux/version.h"
+                version_code_file="${CT_HEADERS_DIR}/linux/version.h"
                 if [ ! -f "${version_code_file}" -o ! -r "${version_code_file}" ]; then
                     CT_Abort "Linux version is unavailable in installed headers files"
                 fi
