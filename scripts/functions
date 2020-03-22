@@ -1558,6 +1558,9 @@ CT_IterateMultilibs() {
         multi_dir="${multilib%%;*}"
         multi_os_dir=$( "${CT_TARGET}-${CT_CC}" -print-multi-os-directory ${multi_flags} )
         multi_root=$( "${CT_TARGET}-${CT_CC}" -print-sysroot ${multi_flags} )
+        if [ -z "${multi_root}" ]; then
+          multi_root="."
+        fi
         root_suffix="${multi_root#${CT_SYSROOT_DIR}}"
         CT_DoExecLog ALL mkdir -p "sysroot-check${root_suffix}"
         if [ -e "sysroot-check${root_suffix}/seen" ]; then
@@ -1579,6 +1582,9 @@ CT_IterateMultilibs() {
         multi_os_dir=$( "${CT_TARGET}-${CT_CC}" -print-multi-os-directory ${multi_flags} )
         multi_os_dir_gcc="${multi_os_dir}"
         multi_root=$( "${CT_TARGET}-${CT_CC}" -print-sysroot ${multi_flags} )
+        if [ -z "${multi_root}" ]; then
+          multi_root="."
+        fi
         multi_target=$( "${CT_TARGET}-${CT_CC}" -print-multiarch ${multi_flags} )
         root_suffix="${multi_root#${CT_SYSROOT_DIR}}"
 
