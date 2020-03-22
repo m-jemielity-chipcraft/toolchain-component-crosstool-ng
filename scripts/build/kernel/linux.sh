@@ -60,6 +60,11 @@ do_kernel_headers()
         arm:64) kernel_arch="arm64";;
     esac
 
+    # CT_HEADERS_DIR is either
+    # CT_SYSROOT_DIR/include
+    # or
+    # CT_SYSROOT_DIR/usr/include
+    # dirname ${CT_SYSROOT_DIR} will give us proper directory
     CT_DoLog EXTRA "Installing kernel headers"
     CT_DoExecLog ALL                                         \
     make -C "${kernel_path}"                                 \
@@ -68,7 +73,7 @@ do_kernel_headers()
          CROSS_COMPILE="${CT_TARGET}-"                       \
          O="${CT_BUILD_DIR}/build-kernel-headers"            \
          ARCH=${kernel_arch}                                 \
-         INSTALL_HDR_PATH="${CT_SYSROOT_DIR}/usr"            \
+         INSTALL_HDR_PATH="$(dirname ${CT_HEADERS_DIR})"     \
          ${V_OPT}                                            \
          headers_install
 
@@ -81,7 +86,7 @@ do_kernel_headers()
              CROSS_COMPILE="${CT_TARGET}-"                       \
              O="${CT_BUILD_DIR}/build-kernel-headers"            \
              ARCH=${kernel_arch}                                 \
-             INSTALL_HDR_PATH="${CT_SYSROOT_DIR}/usr"            \
+             INSTALL_HDR_PATH="$(dirname ${CT_HEADERS_DIR})"     \
              ${V_OPT}                                            \
              headers_check
     fi
