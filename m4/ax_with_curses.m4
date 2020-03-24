@@ -60,7 +60,7 @@
 #     CURSES_LIBS  - library to add to xxx_LDADD
 #     CURSES_CFLAGS  - include paths to add to xxx_CPPFLAGS
 #
-#   In previous versions of this macro, the flags CURSES_LIB and
+#   In previous versions of this macro, the flags CURSES_LIBS and
 #   CURSES_CPPFLAGS were defined. These have been renamed, in keeping with
 #   AX_WITH_CURSES's close bigger brother, PKG_CHECK_MODULES, which should
 #   eventually supersede the use of AX_WITH_CURSES. Neither the library
@@ -452,6 +452,7 @@ AC_DEFUN([AX_WITH_CURSES], [
     unset pkg_cv__ax_cv_ncurses_libs
     unset pkg_cv__ax_cv_ncurses_cppflags
 
+    CPPFLAGS="$ax_saved_CPPFLAGS $CURSES_CFLAGS"
     # Test for plain Curses (or if CURSES_LIBS was set by user)
     AS_IF([test "x$with_plaincurses" != xno && test "x$ax_cv_curses_which" = xno], [
         AS_IF([test "x$CURSES_LIBS" != x], [

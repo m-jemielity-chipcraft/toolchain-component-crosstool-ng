@@ -15095,6 +15095,7 @@ fi
     unset pkg_cv__ax_cv_ncurses_libs
     unset pkg_cv__ax_cv_ncurses_cppflags
 
+    CPPFLAGS="$ax_saved_CPPFLAGS $CURSES_CFLAGS"
     # Test for plain Curses (or if CURSES_LIBS was set by user)
     if test "x$with_plaincurses" != xno && test "x$ax_cv_curses_which" = xno
 then :
