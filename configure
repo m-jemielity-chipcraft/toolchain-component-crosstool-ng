@@ -678,7 +678,6 @@ KCONFIG_lzip
 lzip
 which
 file
-help2man
 unzip
 xz
 bzip2
@@ -686,8 +685,6 @@ gzip
 tar
 readlink
 cut
-makeinfo
-flex
 ac_ct_READELF
 READELF
 ac_ct_OBJDUMP
@@ -829,7 +826,6 @@ with_grep
 with_sed
 enable_dependency_tracking
 with_bash
-with_awk
 with_make
 with_libtool
 with_libtoolize
@@ -870,7 +866,6 @@ OBJDUMP
 READELF
 PATCH
 BASH_SHELL
-AWK
 MAKE
 LIBTOOL
 LIBTOOLIZE
@@ -1541,7 +1536,6 @@ Optional Packages:
   --with-grep=PATH        Deprecated; use GREP=PATH instead
   --with-sed=PATH         Deprecated; use SED=PATH instead
   --with-bash=PATH        Deprecated; use BASH_SHELL=PATH instead
-  --with-awk=PATH         Deprecated; use AWK=PATH instead
   --with-make=PATH        Deprecated; use MAKE=PATH instead
   --with-libtool=PATH     Deprecated; use LIBTOOL=PATH instead
   --with-libtoolize=PATH  Deprecated; use LIBTOOLIZE=PATH instead
@@ -1585,7 +1579,6 @@ Some influential environment variables:
   READELF     Specify the full path to GNU readelf
   PATCH       Specify the full path to GNU patch
   BASH_SHELL  Specify the full path to GNU bash >= 3.1
-  AWK         Specify the full path to GNU awk
   MAKE        Specify the full path to GNU make >= 3.81
   LIBTOOL     Specify the full path to GNU libtool >= 2.4
   LIBTOOLIZE  Specify the full path to GNU libtoolize >= 2.4
@@ -8107,110 +8100,8 @@ printf "%s\n" "$READELF" >&6; } ;; #(
      ;;
 esac
 
-for ac_prog in flex
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_flex+y}
-then :
-  printf %s "(cached) " >&6
-else
-  if test -n "$flex"; then
-  ac_cv_prog_flex="$flex" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_flex="$ac_prog"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-flex=$ac_cv_prog_flex
-if test -n "$flex"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $flex" >&5
-printf "%s\n" "$flex" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-  test -n "$flex" && break
-done
-
-     if test -z "$flex"
-then :
-  as_fn_error $? "missing required tool: flex" "$LINENO" 5
-fi
-
-for ac_prog in makeinfo
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_makeinfo+y}
-then :
-  printf %s "(cached) " >&6
-else
-  if test -n "$makeinfo"; then
-  ac_cv_prog_makeinfo="$makeinfo" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_makeinfo="$ac_prog"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-makeinfo=$ac_cv_prog_makeinfo
-if test -n "$makeinfo"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $makeinfo" >&5
-printf "%s\n" "$makeinfo" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-  test -n "$makeinfo" && break
-done
-
-     if test -z "$makeinfo"
-then :
-  as_fn_error $? "missing required tool: makeinfo" "$LINENO" 5
-fi
-
+#CTNG_CHECK_PROGS_REQ([flex], [flex])
+#CTNG_CHECK_PROGS_REQ([makeinfo], [makeinfo])
 for ac_prog in cut
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -8575,58 +8466,7 @@ then :
   as_fn_error $? "missing required tool: unzip" "$LINENO" 5
 fi
 
-for ac_prog in help2man
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_help2man+y}
-then :
-  printf %s "(cached) " >&6
-else
-  if test -n "$help2man"; then
-  ac_cv_prog_help2man="$help2man" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_help2man="$ac_prog"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-help2man=$ac_cv_prog_help2man
-if test -n "$help2man"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $help2man" >&5
-printf "%s\n" "$help2man" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-  test -n "$help2man" && break
-done
-
-     if test -z "$help2man"
-then :
-  as_fn_error $? "missing required tool: help2man" "$LINENO" 5
-fi
-
+#CTNG_CHECK_PROGS_REQ([help2man], [help2man])
 for ac_prog in file
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -9293,110 +9133,20 @@ then :
 fi
 
 
-# We need a awk that *is* GNU awk
-if test -z "$EGREP"
-then :
-  as_fn_error $? "This macro can only be used after checking for EGREP" "$LINENO" 5
-fi
-
-# Check whether --with-awk was given.
-if test ${with_awk+y}
-then :
-  withval=$with_awk; as_fn_error $? "--with-awk=$withval deprecated; use AWK=$withval instead" "$LINENO" 5
-fi
-
-
-
-     ctng_version_AWK_ok=false
-     # If a variable is already set, check if it an absolute path and convert if not.
-     # Autoconf's AC_PATH_PROGS* macros just blindly trust AWK to be correct - but
-     # AWK is set to just the command name by AC_INIT.
-     if test -n "$AWK"
-then :
-  ac_cv_path_AWK="$AWK"
-          if test -n "must determine absolute path for '\$ac_cv_path_AWK'"
-then :
-  if test -n "must determine absolute path for '\$ac_cv_path_AWK'"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: must determine absolute path for '\$ac_cv_path_AWK':" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_cv_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_cv_path_AWK" | sed 's/^/| /' >&5
-else
-  if test -n "variable ac_cv_path_AWK is set to"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: variable ac_cv_path_AWK is set to:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_cv_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_cv_path_AWK" | sed 's/^/| /' >&5
-fi
-     case $ac_cv_path_AWK in #(
-  /*) :
-     ;; #(
-  *\ *) :
-     ;; #(
-  ?*) :
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for absolute path to $ac_cv_path_AWK" >&5
-printf %s "checking for absolute path to $ac_cv_path_AWK... " >&6; }
-               ac_cv_path_AWK=$(which $ac_cv_path_AWK)
-               { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_path_AWK" >&5
-printf "%s\n" "$ac_cv_path_AWK" >&6; } ;; #(
-  *) :
-     ;;
-esac
-          if test -n ""
-then :
-  if test -n ""
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: :" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_cv_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_cv_path_AWK" | sed 's/^/| /' >&5
-else
-  if test -n "variable ac_cv_path_AWK is set to"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: variable ac_cv_path_AWK is set to:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_cv_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_cv_path_AWK" | sed 's/^/| /' >&5
-fi
-          ver=$(eval $ac_cv_path_AWK --version 2>&1)
-          printf "%s\n" "$as_me:${as_lineno-$LINENO}: looking for '^GNU Awk ' regexp in" >&5
-          if test -n "version info for \$ac_cv_path_AWK"
-then :
-  if test -n "version info for \$ac_cv_path_AWK"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: version info for \$ac_cv_path_AWK:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ver"':" >&5
-fi
-     printf "%s\n" "$ver" | sed 's/^/| /' >&5
-else
-  if test -n "variable ver is set to"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: variable ver is set to:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ver"':" >&5
-fi
-     printf "%s\n" "$ver" | sed 's/^/| /' >&5
-fi
-          ver=$(printf "%s\n" "$ver" | $EGREP '^GNU Awk ')
-          test -n "$ver" && ctng_version_AWK_ok=:
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for awk" >&5
-printf %s "checking for awk... " >&6; }
-if test ${ac_cv_path_AWK+y}
+for ac_prog in gawk mawk nawk awk
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_AWK+y}
 then :
   printf %s "(cached) " >&6
 else
-  if test -z "$AWK"; then
-  ac_path_AWK_found=false
-  # Loop through the user's path and test for each of PROGNAME-LIST
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  if test -n "$AWK"; then
+  ac_cv_prog_AWK="$AWK" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
@@ -9405,104 +9155,37 @@ do
     */) ;;
     *) as_dir=$as_dir/ ;;
   esac
-    for ac_prog in gawk awk
-   do
     for ac_exec_ext in '' $ac_executable_extensions; do
-      ac_path_AWK="$as_dir$ac_prog$ac_exec_ext"
-      as_fn_executable_p "$ac_path_AWK" || continue
-if test -n "checking AWK at"
-then :
-  if test -n "checking AWK at"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking AWK at:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_path_AWK" | sed 's/^/| /' >&5
-else
-  if test -n "variable ac_path_AWK is set to"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: variable ac_path_AWK is set to:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ac_path_AWK"':" >&5
-fi
-     printf "%s\n" "$ac_path_AWK" | sed 's/^/| /' >&5
-fi
-                   ver=$($ac_path_AWK --version 2>&1)
-                   printf "%s\n" "$as_me:${as_lineno-$LINENO}: looking for '^GNU Awk ' regexp in" >&5
-                   if test -n "version info"
-then :
-  if test -n "version info"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: version info:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ver"':" >&5
-fi
-     printf "%s\n" "$ver" | sed 's/^/| /' >&5
-else
-  if test -n "variable ver is set to"
-then :
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: variable ver is set to:" >&5
-else
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: output from command 'printf "%s\n" "$ver"':" >&5
-fi
-     printf "%s\n" "$ver" | sed 's/^/| /' >&5
-fi
-                   ver=$(printf "%s\n" "$ver" | $EGREP '^GNU Awk ')
-                   test -z "$ac_cv_path_AWK" && ac_cv_path_AWK=$ac_path_AWK
-                   test -n "$ver" && ac_cv_path_AWK="$ac_path_AWK" ac_path_AWK_found=: ctng_version_AWK_ok=:
-      $ac_path_AWK_found && break 3
-    done
-  done
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_AWK="$ac_prog"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
   done
 IFS=$as_save_IFS
-  if test -z "$ac_cv_path_AWK"; then
-    :
-  fi
-else
-  ac_cv_path_AWK=$AWK
-fi
 
 fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_path_AWK" >&5
-printf "%s\n" "$ac_cv_path_AWK" >&6; }
 fi
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for GNU awk" >&5
-printf %s "checking for GNU awk... " >&6; }
-     if $ctng_version_AWK_ok
-then :
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-printf "%s\n" "yes" >&6; }
+AWK=$ac_cv_prog_AWK
+if test -n "$AWK"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $AWK" >&5
+printf "%s\n" "$AWK" >&6; }
 else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
 fi
-     AWK=$ac_cv_path_AWK
 
-     if test -n ""
-then :
-  if $ctng_version_AWK_ok
-then :
-  =y
-else
-  =
-fi
-          if test -n "$" -o "" = "y" -o "" = "1"
-then :
-  KCONFIG_="def_bool y"
 
-else
-  KCONFIG_="bool"
+  test -n "$AWK" && break
+done
 
-fi
-
-fi
-
-     if test -z "$AWK" || ! $ctng_version_AWK_ok
-then :
-  as_fn_error $? "Required tool not found: GNU awk" "$LINENO" 5
-fi
-
+# We need a awk that *is* GNU awk
+# CTNG_PROG_VERSION_REQ_STRICT([AWK],
+#     [GNU awk],
+#     [awk],
+#     [gawk awk],
+#     [^GNU Awk ])
 
 # FIXME This checks for tools at the time configure runs. If a tool is later updated
 # to satisfy our version requirement, we still won't be able to see that. Or worse,
