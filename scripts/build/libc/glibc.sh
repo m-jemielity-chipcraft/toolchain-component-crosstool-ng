@@ -76,6 +76,15 @@ glibc_backend()
     CT_EndStep
 }
 
+glibc_get_sysroot_prefix()
+{
+    if [ "${CT_USE_SYSROOT}" = "y" ]; then
+        echo -n "/usr"
+    else
+        echo -n "/"
+    fi
+}
+
 # This backend builds the C library once
 # Usage: glibc_backend_once param=value [...]
 #   Parameter           : Definition                            : Type
@@ -113,7 +122,11 @@ glibc_backend_once()
     # with other multilib variants. We then remove these temporary files at
     # the beginning of the libc-final step and allow glibc to install them
     # where it thinks is proper.
-    startfiles_dir="${multi_root}/usr/lib/${multi_os_dir}"
+    if [ "${CT_USE_SYSROOT}" = "y" ]; then
+      startfiles_dir="${multi_root}/usr/lib/${multi_os_dir}"
+    else
+      startfiles_dir="${multi_root}/lib"
+    fi
     CT_SanitizeVarDir startfiles_dir
 
     if [ "${libc_mode}" = "final" ]; then
@@ -270,7 +283,7 @@ glibc_backend_once()
     RANLIB=${CT_TARGET}-ranlib                                      \
     "${CONFIG_SHELL}"                                               \
     "${src_dir}/configure"                                          \
-        --prefix=/usr                                               \
+        --prefix=$(glibc_get_sysroot_prefix)                        \
         --build=${CT_BUILD}                                         \
         --host=${multi_target}                                      \
         --cache-file="$(pwd)/config.cache"                          \
@@ -536,17 +549,17 @@ glibc_locales()
 
     # Configure with --prefix the way we want it on the target...
 
-    CT_DoExecLog CFG                       \
-    CFLAGS="${glibc_cflags}"               \
-    ${CONFIG_SHELL}                        \
-    "${src_dir}/configure"                 \
-        --prefix=/usr                      \
-        --cache-file="$(pwd)/config.cache" \
-        --without-cvs                      \
-        --disable-profile                  \
-        --without-gd                       \
-        --disable-debug                    \
-        --disable-sanity-checks            \
+    CT_DoExecLog CFG                         \
+    CFLAGS="${glibc_cflags}"                 \
+    ${CONFIG_SHELL}                          \
+    "${src_dir}/configure"                   \
+        --prefix=$(glibc_get_sysroot_prefix) \
+        --cache-file="$(pwd)/config.cache"   \
+        --without-cvs                        \
+        --disable-profile                    \
+        --without-gd                         \
+        --disable-debug                      \
+        --disable-sanity-checks              \
         "${extra_config[@]}"
 
     CT_DoLog EXTRA "Building C library localedef"
